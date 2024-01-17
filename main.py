@@ -49,7 +49,7 @@ def show_target(data):
 class Command:  # Надписи на кнопках в Telegram-боте
     ADD_WORD = 'ДОБАВИТЬ СЛОВО ➕'
     DELETE_WORD = 'УДАЛИТЬ СЛОВО 🔙'
-    NEXT = 'ДАЛЬШЕ ⏭'
+    NEXT = 'ДАЛЬШЕ⏭'
 
 
 class MyStates(StatesGroup):
