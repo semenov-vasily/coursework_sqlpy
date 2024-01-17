@@ -227,7 +227,6 @@ def message_reply(message):
             # Создаем список hint_text
             hint_text = ["Отлично!❤", hint]
             hint = show_hint(*hint_text)  # Формирование строки ответа
-            create_cards(message)  # Возврат на стартовую страницу в Telegram-боте
         else:
             # Если ответ неправильный
             for btn in buttons:
@@ -241,6 +240,7 @@ def message_reply(message):
     markup.add(*buttons)  # Формируем разметку кнопок
     # Отправка сообщения с ответом пользователю о правильном/нет переводе слова
     bot.send_message(message.chat.id, hint, reply_markup=markup)
+    create_cards(message)  # Возврат на стартовую страницу в Telegram-боте
 
 
 bot.add_custom_filter(custom_filters.StateFilter(bot))
