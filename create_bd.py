@@ -1,16 +1,7 @@
 import psycopg2
 import configparser
 
-# Функция для чтения password (пароль к postgresSQL),
-# name_bd (название базы данных),
-# token пользователя Telegram-бота из файла 'token_id_test.ini'
-def get_password():
-    data = configparser.ConfigParser()
-    data.read('password.ini')
-    password = data["password"]["password"]
-    name_bd = data["password"]["name_bd"]
-    token = data["password"]["token"]
-    return [password, name_bd, token]
+from work_bd import get_password
 
 
 # Функция создания таблиц words, users, users_words
