@@ -13,6 +13,7 @@ from work_bd import add_user_words
 from work_bd import get_one_random_word
 from work_bd import get_three_random_words
 
+
 try:
     # Попытка подключения с БД и проверка на ошибку
     connection = psycopg2.connect(dbname=get_password()[1], user='postgres', password=get_password()[0])
