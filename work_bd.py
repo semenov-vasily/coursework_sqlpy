@@ -4,7 +4,7 @@ import configparser
 
 # Функция для чтения password (пароль к postgresSQL),
 # name_bd (название базы данных),
-# token пользователя Telegram-бота из файла 'token_id_test.ini'
+# token пользователя Telegram-бота из файла 'password.ini'
 def get_password():
     data = configparser.ConfigParser()
     data.read('password.ini')
@@ -23,7 +23,7 @@ def add_user(name, surname, nickname):
                             VALUES(%s, %s, %s) 
                             ON CONFLICT (nickname) DO NOTHING 
                             RETURNING id, name, surname, nickname""", (name, surname, nickname))
-            # print("Добавлен пользователь " + name + " " + surname + " Под ником: " + nickname)
+            print(f"Добавлен пользователь {name} {surname} Под ником: {nickname}")
             conn.commit()
     conn.close()
 
