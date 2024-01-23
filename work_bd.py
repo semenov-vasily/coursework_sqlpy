@@ -23,7 +23,7 @@ def add_user(name, surname, nickname):
                             VALUES(%s, %s, %s) 
                             ON CONFLICT (nickname) DO NOTHING 
                             RETURNING id, name, surname, nickname""", (name, surname, nickname))
-            print(f"Добавлен пользователь {name} {surname} Под ником: {nickname}")
+            print(f"Добавлен пользователь {name} {surname} под ником: {nickname}")
             conn.commit()
     conn.close()
 

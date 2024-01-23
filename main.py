@@ -44,7 +44,7 @@ def show_hint(*lines):
 
 # Функция показывающая слово для перевода
 def show_target(data):
-    return f"{data['target_word']} -> {data['translate_word']}"
+    return f'слово ({data['target_word']}) переводится как ({data['translate_word']})'
 
 
 class Command:  # Надписи на кнопках в Telegram-боте
@@ -228,6 +228,11 @@ def message_reply(message):
             # Создаем список hint_text
             hint_text = ["Отлично!❤", hint]
             hint = show_hint(*hint_text)  # Формирование строки ответа
+            for btn in buttons:
+                if btn.text == text:
+                    # Добавление сердечка в кнопку правильного ответа
+                    btn.text = text + '❤'
+                    break
         else:
             # Если ответ неправильный
             for btn in buttons:
@@ -241,7 +246,8 @@ def message_reply(message):
     markup.add(*buttons)  # Формируем разметку кнопок
     # Отправка сообщения с ответом пользователю о правильном/нет переводе слова
     bot.send_message(message.chat.id, hint, reply_markup=markup)
-    create_cards(message)  # Возврат на стартовую страницу в Telegram-боте
+    if text == target_word:
+        create_cards(message)  # Возврат на стартовую страницу в Telegram-боте
 
 
 bot.add_custom_filter(custom_filters.StateFilter(bot))
